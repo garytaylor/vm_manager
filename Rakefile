@@ -5,11 +5,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "vm_manager"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A ruby API to many virtual machine types}
+    gem.description = %Q{This gem provides a common interface to many different types of virtual machine.  The use case that it was written for is when you need an external system as part of your test procedures.  Using a virtual machine with snapshot capabilities is extremely useful as you can reset the virtual machine to a known state at the start of every test.}
     gem.email = "gary.taylor@rubysystems.co.uk"
     gem.homepage = "http://github.com/garytaylor/vm_manager"
-    gem.authors = ["Gary"]
+    gem.authors = ["Gary Taylor"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
