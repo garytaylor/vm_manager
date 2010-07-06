@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{vm_manager}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Gary Taylor"]
@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     ".idea/.rakeTasks",
+     ".idea/vcs.xml",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -26,7 +28,9 @@ Gem::Specification.new do |s|
      "lib/vm_manager.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
-     "spec/vm_manager_spec.rb"
+     "spec/virtual_machines/virtual_machine_spec.rb",
+     "spec/vm_manager_spec.rb",
+     "vm_manager.gemspec"
   ]
   s.homepage = %q{http://github.com/garytaylor/vm_manager}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -35,6 +39,7 @@ Gem::Specification.new do |s|
   s.summary = %q{A ruby API to many virtual machine types}
   s.test_files = [
     "spec/spec_helper.rb",
+     "spec/virtual_machines/virtual_machine_spec.rb",
      "spec/vm_manager_spec.rb"
   ]
 
