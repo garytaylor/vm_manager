@@ -11,9 +11,7 @@ begin
     gem.homepage = "http://github.com/garytaylor/vm_manager"
     gem.authors = ["Gary Taylor"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
+    gem.add_dependency "net-ssh", ">=2.0.0"
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
