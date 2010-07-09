@@ -28,5 +28,11 @@ class VMManager::VM::ParallelsDesktop < VMManager::VM::Base
   def stop
     adapter.stop_vm(uid)
   end
+  def snapshots
+    adapter.vm_snapshots(uid)
+  end
+  def snapshot_switch(snapshot_uid)
+    adapter.vm_snapshot_switch(uid,snapshot_uid)
+  end
  
 end

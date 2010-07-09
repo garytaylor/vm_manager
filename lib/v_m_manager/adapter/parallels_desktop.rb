@@ -1,6 +1,12 @@
 require File.dirname(__FILE__) + "/base.rb"
 require 'net/ssh'
 module VMManager
+  class VirtualMachineNotFound < Exception
+
+  end
+  class VirtualMachineNotRunning < Exception
+
+  end
   module Adapter
     class ParallelsDesktop
       attr_accessor :remote, :url, :password
@@ -46,14 +52,14 @@ module VMManager
       def vm_snapshots(uid)
         vm=find_by_uid(uid)
         if vm.nil?
-          return false
+          raise ::VMManager::VirtualMachineNotFound, 'Virtual machine not found'
         else
-          return false unless vm[:status]=~/running/im
+          raise ::VMManager::VirtualMachineNotRunning unless vm[:status]=~/running/im
         end
         result=send_command("prlctl snapshot-list #{uid}")
         results=[]
-        r.scan(/(?:\{([^}]*)\})*\s*\*?\{([^}]*)\}/im) do |parent_uid,snap_uid|
-          results<<{:uid=>snap_uid,:parent_uid=>parent_uid,:virtual_machine_uid=>vm_uid}
+        result.scan(/(?:\{([^}]*)\})*\s*\*?\{([^}]*)\}/im) do |parent_uid,snap_uid|
+          results<<{:uid=>snap_uid,:parent_uid=>parent_uid,:virtual_machine_uid=>uid}
         end
         return results
       end
