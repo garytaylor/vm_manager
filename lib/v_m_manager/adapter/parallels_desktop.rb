@@ -79,10 +79,12 @@ module VMManager
       end
       def connection
         if @_connection.nil?
-          if(url=~/ssh:\/\/(.*?)@(.*)/)
-            user=$1
-            host=$2
-            @_connection=Net::SSH.start(host,user,:password=>password)
+          if(url=~/ssh:(\d*)\/\/(.*?)@(.*)/)
+            port=$1
+            user=$2
+            host=$3
+            port='22' if port==''
+            @_connection=Net::SSH.start(host,user,:password=>password,:port=>port)
           else
             raise "Invalid url #{url} given"
           end
